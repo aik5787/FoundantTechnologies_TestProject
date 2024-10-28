@@ -29,7 +29,12 @@ name: Cypress Tests
 on:
   push:
   pull_request:
+    types: [opened, reopened, edited, synchronize]  # Запускать на определенных событиях pull request
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to test'
+        required: false
 
 jobs:
   cypress-e2e:
@@ -67,5 +72,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: mochawesome-reports-${{ github.run_id }}
+          name: mochawesome-reports-${{ github.run_id }}-${{ matrix.spec }} 
           path: cypress/reports/*.json
