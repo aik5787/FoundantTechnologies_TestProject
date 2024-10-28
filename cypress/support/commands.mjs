@@ -23,7 +23,6 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import 'cypress-wait-until';
 import LoginPage from "../page_objects/loginPage.mjs";
 import UserSitesPage from "../page_objects/userSitesPage.mjs";
 
