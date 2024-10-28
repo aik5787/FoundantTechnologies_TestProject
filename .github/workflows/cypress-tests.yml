@@ -43,7 +43,7 @@ jobs:
           - 'cypress/e2e/UI/login/**/*'
           - 'cypress/e2e/UI/logout/**/*'
           - 'cypress/e2e/UI/createProfile/**/*'
-        fail-fast: false
+      fail-fast: false
 
     steps:
       - name: Checkout code
