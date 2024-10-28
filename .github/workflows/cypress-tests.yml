@@ -7,6 +7,7 @@ on:
         required: false
   pull_request:
     types: [opened, reopened, edited, synchronize]
+
 jobs:
   Cypress-Run:
     runs-on: ubuntu-latest
@@ -14,12 +15,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Укажите версию Node.js, которую вы используете
+
+      - name: Install dependencies
+        run: npm ci  # Или используйте 'npm install', если у вас нет package-lock.json
+      
       - name: Cypress run
         uses: cypress-io/github-action@v6.6.1
         with:
           browser: chrome
-          working-directory: ./
-          spec: 'cypress/e2e/UI/*/**/*'
+          working-directory: ./  # Запустит все тесты в указанной директории
         env:
           CYPRESS_USERNAME: ${{ secrets.USERNAME }}
-          CYPRESS_PASSWORD: ${{ secrets.PASSWORD }} 
+          CYPRESS_PASSWORD: ${{ secrets.PASSWORD }}
