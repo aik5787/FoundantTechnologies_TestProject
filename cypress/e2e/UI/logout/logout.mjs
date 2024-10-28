@@ -16,5 +16,5 @@ When("I log out", () => {
 });
 
 Then("I should be redirected to the login page", () => {
-  cy.contains(verificationData.loginPageText).should("exist");
+  cy.contains(verificationData.loginPageTex).should("exist");
 });
