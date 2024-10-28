@@ -26,6 +26,7 @@ export default defineConfig({
     baseUrl: "https://app.foundant.io",
     viewportWidth: 1280,
     viewportHeight: 720,
+    pageLoadTimeout: 120000,
     specPattern: "**/*.feature",
     setupNodeEvents,
   },

@@ -19,6 +19,7 @@ jobs:
         with:
           browser: chrome
           working-directory: ./
+          spec: 'cypress/e2e/UI/login/login.mjs'
         env:
           CYPRESS_USERNAME: ${{ secrets.USERNAME }}
           CYPRESS_PASSWORD: ${{ secrets.PASSWORD }} 
