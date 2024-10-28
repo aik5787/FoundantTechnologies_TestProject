@@ -1,0 +1,7 @@
+{
+    "loginUrl": "/u/login",
+    "betaSiteUrl": "/tasks",
+    "betaSiteTitle": "BETA",
+    "logoutButtonText": "Log out"
+
+}
