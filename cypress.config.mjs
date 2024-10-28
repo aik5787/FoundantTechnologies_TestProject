@@ -29,6 +29,15 @@ export default defineConfig({
     pageLoadTimeout: 120000,
     defaultCommandTimeout: 30000,
     specPattern: "**/*.feature",
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: false,
+      json: true
+    },
+    screenshotOnRunFailure: true,
+    screenshotsFolder: "cypress/screenshots",
     setupNodeEvents,
   },
 });

@@ -41,4 +41,5 @@ Cypress.Commands.add("errorHandler", () => {
   Cypress.Commands.add("setupTestEnvironment", () => {
     cy.errorHandler();
     cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
+    cy.clearCookies();
   });
