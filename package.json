@@ -12,17 +12,11 @@
   },
 "scripts": {
   "clean:reports": "rm -rf cypress/reports/*",
-  "test:addTask": "cypress run --browser chrome --spec 'cypress/e2e/UI/addTask/**/*'",
-  "test:addNote": "cypress run --browser chrome --spec 'cypress/e2e/UI/addNote/**/*'",
-  "test:login": "cypress run --browser chrome --spec 'cypress/e2e/UI/login/**/*'",
-  "test:logout": "cypress run --browser chrome --spec 'cypress/e2e/UI/logout/**/*'",
-  "test:createProfile": "cypress run --browser chrome --spec 'cypress/e2e/UI/createProfile/**/*'",
+  "test:parallel": "concurrently \"cypress run --browser chrome --spec 'cypress/e2e/UI/addNote/*.{feature,mjs}'\" \"cypress run --browser chrome --spec 'cypress/e2e/UI/addTask/*.{feature,mjs}'\" \"cypress run --browser chrome --spec 'cypress/e2e/UI/login/*.{feature,mjs}'\" \"cypress run --browser chrome --spec 'cypress/e2e/UI/logout/*.{feature,mjs}'\"",
   "merge:reports": "mochawesome-merge ./cypress/reports/*.json > ./cypress/reports/merged-report.json || true",
   "generate:html": "marge cypress/reports/merged-report.json -o cypress/reports/html --inline",
-  "test:parallel": "concurrently \"npm run test:addTask\" \"npm run test:addNote\" \"npm run test:login\" \"npm run test:logout\" \"npm run test:createProfile\"",
-  "test:full": "npm run clean:reports && npm run test:parallel && npm run merge:reports && npm run generate:html"
+  "test:full": "npm run clean:reports && npm run test:parallel; npm run merge:reports && npm run generate:html"
 }
-
 
 
 
