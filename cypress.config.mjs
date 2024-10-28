@@ -37,7 +37,7 @@ export default defineConfig({
       json: true
     },
     screenshotOnRunFailure: true,
-    screenshotsFolder: "cypress/screenshots",
+    screenshotsFolder: "cypress/reports/screenshots",
     setupNodeEvents,
   },
 });
