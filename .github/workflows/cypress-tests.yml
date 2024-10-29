@@ -1,0 +1,42 @@
+name: Cypress Tests
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to test"
+        required: false
+
+jobs:
+  cypress-e2e:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        spec:
+          - "cypress/e2e/UI/addTask/**/*"
+          - "cypress/e2e/UI/addNote/**/*"
+          - "cypress/e2e/UI/login/**/*"
+          - "cypress/e2e/UI/logout/**/*"
+          - "cypress/e2e/UI/createProfile/**/*"
+      fail-fast: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run e2e Tests
+        env:
+          CYPRESS_USERNAME: ${{ secrets.USERNAME }}
+          CYPRESS_PASSWORD: ${{ secrets.PASSWORD }}
+        run: npx cypress run --spec "${{ matrix.spec }}"

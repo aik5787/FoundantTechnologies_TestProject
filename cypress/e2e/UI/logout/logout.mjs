@@ -7,7 +7,7 @@ Before(() => {
 });
 
 Given("I am logged in", () => {
-    cy.loginUi();
+  cy.loginUi();
 });
 
 When("I log out", () => {
@@ -16,5 +16,5 @@ When("I log out", () => {
 });
 
 Then("I should be redirected to the login page", () => {
-  cy.url().should("include", verificationData.loginUrl);
+  cy.contains(verificationData.loginPageText).should("exist");
 });
