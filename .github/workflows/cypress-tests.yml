@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch to test'
+        description: "Branch to test"
         required: false
 
 jobs:
@@ -15,12 +15,12 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        spec: 
-          - 'cypress/e2e/UI/addTask/**/*'
-          - 'cypress/e2e/UI/addNote/**/*'
-          - 'cypress/e2e/UI/login/**/*'
-          - 'cypress/e2e/UI/logout/**/*'
-          - 'cypress/e2e/UI/createProfile/**/*'
+        spec:
+          - "cypress/e2e/UI/addTask/**/*"
+          - "cypress/e2e/UI/addNote/**/*"
+          - "cypress/e2e/UI/login/**/*"
+          - "cypress/e2e/UI/logout/**/*"
+          - "cypress/e2e/UI/createProfile/**/*"
       fail-fast: false
 
     steps:
@@ -39,4 +39,4 @@ jobs:
         env:
           CYPRESS_USERNAME: ${{ secrets.USERNAME }}
           CYPRESS_PASSWORD: ${{ secrets.PASSWORD }}
-        run: npx cypress run --spec "${{ matrix.spec }}" --reporter mochawesome --reporter-options "reportDir=cypress/reports,overwrite=false,html=false,json=true"
+        run: npx cypress run --spec "${{ matrix.spec }}"

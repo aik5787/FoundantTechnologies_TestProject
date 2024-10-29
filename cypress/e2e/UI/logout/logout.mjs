@@ -7,7 +7,7 @@ Before(() => {
 });
 
 Given("I am logged in", () => {
-    cy.loginUi();
+  cy.loginUi();
 });
 
 When("I log out", () => {

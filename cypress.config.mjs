@@ -2,7 +2,7 @@ import { defineConfig } from "cypress";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -29,12 +29,12 @@ export default defineConfig({
     pageLoadTimeout: 120000,
     defaultCommandTimeout: 60000,
     specPattern: "**/*.feature",
-    reporter: 'mochawesome',
+    reporter: "mochawesome",
     reporterOptions: {
-      reportDir: 'cypress/reports',
+      reportDir: "cypress/reports",
       overwrite: false,
       html: false,
-      json: true
+      json: true,
     },
     screenshotOnRunFailure: true,
     screenshotsFolder: "cypress/reports/screenshots",
